@@ -1,7 +1,8 @@
 package opgave01.models;
 
 public interface ListEaaa<E> extends Iterable<E> {
-    /*
+
+    /**
      * Adds an element to the end of the list
      * @param e the element to add
      */
