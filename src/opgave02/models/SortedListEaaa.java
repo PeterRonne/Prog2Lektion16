@@ -3,7 +3,7 @@ package opgave02.models;
 import java.util.Iterator;
 
 public interface SortedListEaaa<E extends Comparable<E>> extends Iterable<E> {
-    /*
+    /**
      * Adds an element to the list, sorted by the natural order.
      * @param e the element to add
      */

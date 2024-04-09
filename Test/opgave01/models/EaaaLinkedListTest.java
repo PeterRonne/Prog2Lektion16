@@ -56,6 +56,68 @@ class EaaaLinkedListTest {
     }
 
     @Test
+    void remove_First_() {
+        // Arrange
+        int expextedSize = 4;
+        String elementToRemove = "Invertebrates";
+
+        // Act
+        boolean removed = animalGroups.remove(elementToRemove);
+        int actualSize = animalGroups.size();
+
+        //Assert
+        assertEquals(expextedSize, actualSize);
+        assertTrue(removed);
+    }
+
+    @Test
+    void remove_First_When_Only_One_Element_Exist() {
+        // Arrange
+        String elementToRemove = "Fish";
+        animalGroups = new EaaaLinkedList<>();
+        animalGroups.add(elementToRemove);
+        int expextedSize = 0;
+
+        // Act
+        boolean removed = animalGroups.remove(elementToRemove);
+        int actualSize = animalGroups.size();
+
+        //Assert
+        assertEquals(expextedSize, actualSize);
+        assertNull(animalGroups.getHead());
+        assertNull(animalGroups.getTail());
+        assertTrue(removed);
+    }
+
+    @Test
+    void remove_Last() {
+        // Arrange
+        int expextedSize = 4;
+        String elementToRemove = "Birds";
+
+        // Act
+        boolean removed = animalGroups.remove(elementToRemove);
+        int actualSize = animalGroups.size();
+
+        //Assert
+        assertEquals(expextedSize, actualSize);
+        assertEquals( "Reptiles",animalGroups.getTail().getElement());
+        assertTrue(removed);
+    }
+
+    @Test
+    void remove_Element_Not_Found() {
+        // Arrange
+        String elementToRemove = "Mammals";
+
+        // Act
+        boolean removed = animalGroups.remove(elementToRemove);
+
+        //Assert
+        assertFalse(removed);
+    }
+
+    @Test
     void addFirst() {
         int expectedSize = 6;
         String mammels = "Mammels";
@@ -66,6 +128,24 @@ class EaaaLinkedListTest {
 
         //Assert
         assertEquals(expectedSize, actualSize);
+        assertEquals(mammels, animalGroups.getHead().getElement());
+        assertEquals(mammels, animalGroups.get(0));
+    }
+
+    @Test
+    void addFirst_To_Empty_List() {
+        int expectedSize = 1;
+        String mammels = "Mammels";
+        animalGroups = new EaaaLinkedList<>();
+
+        // Act
+        animalGroups.addFirst(mammels);
+        int actualSize = animalGroups.size();
+
+        //Assert
+        assertEquals(expectedSize, actualSize);
+        assertEquals(mammels, animalGroups.getHead().getElement());
+        assertEquals(mammels, animalGroups.getTail().getElement());
         assertEquals(mammels, animalGroups.get(0));
     }
 
